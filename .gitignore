@@ -1,2 +1,5 @@
 #Visual Studio files
 *.vs/
+
+#Python compiler files
+*.pyc
