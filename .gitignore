@@ -3,3 +3,4 @@
 
 #Python compiler files
 *.pyc
+*__pycache__/
