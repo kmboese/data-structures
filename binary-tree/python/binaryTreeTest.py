@@ -1,4 +1,4 @@
-from binary_tree import Node, BinaryTree, dPrint
+from binaryTree import Node, BinaryTree, dPrint
 from random import randint
 
 def main():
