@@ -11,10 +11,15 @@ class BinaryTree:
 
     def __init__(self):
         self.root = None
-        self.elementCount = 1
+        self.elementCount = 0
         self.height = 0
 
     def insert(self, n, current = None):
+        # Special case: insert into an empty tree
+        if self.elementCount == 0:
+            self.root = n
+            self.elementCount += 1
+            return
         if current == None:
             current = self.root
         if (n.data <= current.data):

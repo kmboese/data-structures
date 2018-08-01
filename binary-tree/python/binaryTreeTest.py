@@ -3,6 +3,7 @@ from random import randint
 
 def main():
     tree = BinaryTree()
+    tree.insert(Node(1))
     print("Tree.root.data = {}".format(tree.root.data))
 
     #Test single insert
