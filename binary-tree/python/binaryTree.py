@@ -20,6 +20,7 @@ class BinaryTree:
             self.root = n
             self.elementCount += 1
             return
+        # By default, start inserts at the root node
         if current == None:
             current = self.root
         if (n.data <= current.data):
