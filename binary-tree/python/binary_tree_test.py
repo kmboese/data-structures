@@ -1,9 +1,8 @@
 from binary_tree import Node, BinaryTree, dPrint
 from random import randint
-
+import copy
 def main():
     tree = BinaryTree()
-    print("Tree.root.data = {}".format(tree.root.data))
 
     #Test single insert
     tree.insert(Node(1))
@@ -12,18 +11,17 @@ def main():
     for i in range(2,10):
         tree.insert(Node(i))
 
-    #Test random insert
-    randTree = BinaryTree()
-    for i in range(0,10):
-        value = randint(1,50)
-        dPrint("inserting " + str(value))
-        randTree.insert(Node(value))
+    #Test DFS
+    DFSTree = BinaryTree()
+    data = [17,44,13,41,11,15,22]
+    for num in data:
+        DFSTree.insert(Node(num))
     
     #Test printing trees
     print("Printing tree with sequential elements...")
     tree.printDFS()
     print("\nPrinting tree with random elements...")
-    randTree.printDFS()
+    DFSTree.printDFS()
 
 if __name__ == "__main__":
     main()
