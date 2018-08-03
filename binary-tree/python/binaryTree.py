@@ -21,12 +21,12 @@ class BinaryTree:
             self.elementCount += 1
             return
         # By default, start inserts at the root node
-        if current == None:
+        if current is None:
             current = self.root
 
         # Insert left
         if (n.data <= current.data):
-            if (current.left == None):
+            if (current.left is None):
                 dPrint("inserting {} left".format(n.data))
                 current.left = n
                 n.parent = current
@@ -36,7 +36,7 @@ class BinaryTree:
                 self.insert(n, current.left)
         # Insert right
         else:
-            if (current.right == None):
+            if (current.right is None):
                 dPrint("inserting {} right".format(n.data))
                 current.right = n
                 n.parent = current

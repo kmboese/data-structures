@@ -14,7 +14,7 @@ def testEmptyTree():
     tree = BinaryTree()
     assert(tree.elementCount == 0)
     assert(tree.height == 0)
-    assert(tree.root == None)
+    assert(tree.root is None)
     print("Passed" + divider)
 
 def testTreeWithOneNode():
@@ -23,7 +23,7 @@ def testTreeWithOneNode():
     tree.insert(Node(0))
     assert(tree.elementCount == 1)
     assert(tree.height == 0)
-    assert(tree.root.parent == None)
+    assert(tree.root.parent is None)
     print("Passed" + divider)
 
 def testSingleInserts(loops):
@@ -34,7 +34,7 @@ def testSingleInserts(loops):
         tree.insert(Node(val))
         assert(tree.elementCount == 1)
         assert(tree.height == 0)
-        assert(tree.root.parent == None)
+        assert(tree.root.parent is None)
     print("Passed" + divider)
 
 def main():
@@ -48,7 +48,7 @@ def main():
 
     # Test tree with one node
     assert(tree.elementCount == 1)
-    assert(tree.root.parent == None)
+    assert(tree.root.parent is None)
 
     #Test single insert
     tree.insert(Node(2))
