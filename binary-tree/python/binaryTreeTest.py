@@ -27,7 +27,7 @@ def testTreeWithOneNode():
     print("Passed" + divider)
 
 def testSingleInserts(loops):
-    print(divider + "Executing testTreeWithOneNode()...")
+    print(divider + "Executing testSingleInserts()...")
     for i in range(loops):
         tree = BinaryTree()
         val = randint(MIN_INT_32, MAX_INT_32)
@@ -37,10 +37,38 @@ def testSingleInserts(loops):
         assert(tree.root.parent == None)
     print("Passed" + divider)
 
+def testSequentialInsert():
+    print(divider + "Executing testSequentialInsert()...")
+    tree  = BinaryTree()
+    for i in range(1,11):
+        tree.insert(Node(i))
+    assert(tree.root.data == 1)
+    assert(tree.elementCount == 10)
+    #print("Tree height is {}, expected to be {}".format(tree.height, 9))
+    assert(tree.height == 9)
+    print("Passed" + divider)
+
+def testRandomInsert():
+    print(divider + "Executing testRandomInsert()...")
+    numbers = [7,2,10,4,3,1,5,8,6,9]
+    tree = BinaryTree()
+    for number in numbers:
+        tree.insert(Node(number))
+    assert(tree.root.data == 7)
+    assert(tree.elementCount == 10)
+    print("Tree height is {}, expected to be {}".format(tree.height, 4))
+    tree.printDFS()
+    print()
+    tree.printBFS()
+    assert(tree.height == 4)
+    print("Passed" + divider)
+
 def main():
     testEmptyTree()
     testTreeWithOneNode()
     testSingleInserts(LONG_TEST_LOOPS)
+    testSequentialInsert()
+    testRandomInsert()
     '''
     tree = BinaryTree()
     tree.insert(Node(1))
