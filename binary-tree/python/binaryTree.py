@@ -83,8 +83,11 @@ class BinaryTree:
         children = []
         if not self.root:
             print("Error in getNodesBFS: tree is empty")
+        # Handle the root node
         nodes.append(self.root)
         queue.append(self.root)
+
+        # Get all child nodes at each level
         while len(queue) > 0:
             children = queue[0].getChildren()
             for child in children:

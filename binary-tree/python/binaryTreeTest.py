@@ -103,8 +103,6 @@ def testBFSRandom():
     print("Passed" + divider)
     
 
->>>>>>> b28bac0b7d7c801dd8c4dadce47fc54bca16c371
-
 def main():
     testEmptyTree()
     testTreeWithOneNode()
