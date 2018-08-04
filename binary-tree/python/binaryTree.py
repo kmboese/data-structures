@@ -1,4 +1,4 @@
-DEBUG = True
+DEBUG = False
 
 class Node:
     def __init__(self, data):
@@ -31,12 +31,12 @@ class BinaryTree:
             return
 
         # By default, start inserts at the root node
-        if current == None:
+        if current is None:
             current = self.root
 
         # Insert left
         if (n.data <= current.data):
-            if (current.left == None):
+            if (current.left is None):
                 dPrint("inserting {} left".format(n.data))
                 current.left = n
                 n.parent = current
@@ -49,7 +49,7 @@ class BinaryTree:
 
         # Insert right
         else:
-            if (current.right == None):
+            if (current.right is None):
                 dPrint("inserting {} right".format(n.data))
                 current.right = n
                 n.parent = current
@@ -59,6 +59,41 @@ class BinaryTree:
             else:
                 height += 1
                 self.insert(n, current.right, height)
+
+    def getNodesDFS(self, n=None, nodes=[]):
+        if not self.root:
+            print("Error in getNodesDFS(): tree is empty")
+        # Handle initial insert
+        if not n:
+            n = self.root
+            nodes.append(n)
+        # Standard insert
+        else:
+            nodes.append(n)
+        # Recurse down the tree
+        if n.left:
+            self.getNodesDFS(n.left, nodes)
+        if n.right:
+            self.getNodesDFS(n.right, nodes)
+        return nodes
+
+    def getNodesBFS(self):
+        nodes = []
+        queue = []
+        children = []
+        if not self.root:
+            print("Error in getNodesBFS: tree is empty")
+        nodes.append(self.root)
+        queue.append(self.root)
+        while len(queue) > 0:
+            children = queue[0].getChildren()
+            for child in children:
+                nodes.append(child)
+                queue.append(child)
+            queue.remove(queue[0])
+        return nodes
+        
+        
 
     # Traversal functions
     def printDFS(self, n=None, level=0):
@@ -97,3 +132,10 @@ class BinaryTree:
 # Helper functions
 def dPrint(message):
     if DEBUG: print("\tDebug: {}".format(message))
+
+def nodesToString(nodes):
+    ret = ""
+    for node in nodes:
+        ret += str(node.data) + " "
+    #ret += "\n"
+    return ret
