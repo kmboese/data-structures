@@ -114,34 +114,5 @@ def main():
     testBFSSingleInsert()
     testBFSRandom()
 
-    '''
-    tree = BinaryTree()
-    tree.insert(Node(1))
-    print("Tree.root.data = {}".format(tree.root.data))
-
-    # Test tree with one node
-    assert(tree.elementCount == 1)
-    assert(tree.root.parent is None)
-
-    #Test single insert
-    tree.insert(Node(2))
-
-    #Test sequential insert
-    for i in range(3,10):
-        tree.insert(Node(i))
-
-    #Test random insert
-    randTree = BinaryTree()
-    for number in randomNumbers:
-        dPrint("inserting " + str(number))
-        randTree.insert(Node(number))
-    
-    #Test printing trees
-    print("Printing tree with sequential elements...")
-    tree.printDFS()
-    print("\nPrinting tree with random elements...")
-    randTree.printDFS()
-    '''
-
 if __name__ == "__main__":
     main()
