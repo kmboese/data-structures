@@ -1,3 +1,7 @@
+import sys
+sys.path.insert(0, 'D:\github-projects\data-structures\shared')
+from node import Node
+
 DEBUG = False
 
 class Node:
