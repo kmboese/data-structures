@@ -1,7 +1,11 @@
-#Visual Studio files
+# Visual Studio files
 *.vs/
 .vscode/*
 
-#Python compiler files
+# Python compiler files
 *.pyc
 *__pycache__/
+
+# C++ compiler files
+*.d
+*.exe
