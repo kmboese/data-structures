@@ -12,10 +12,18 @@ class BinaryTree {
 
 public:
     // Constructors
-    BinaryTree(int data);
+    BinaryTree();
 
     // Tree functions
-    void insert(int data, struct Node *n);
+    /* insert:
+    * inputs: 
+    *   data: data to insert
+    *   n: pointer to current node of tree
+    *   height: tree height of current insert
+    * Returns:
+    *   0 if successful, -1 otherwise.
+    */
+    int insert(struct Node *newNode, struct Node *n, int height=1);
 
     // Accessors
     int getHeight();
