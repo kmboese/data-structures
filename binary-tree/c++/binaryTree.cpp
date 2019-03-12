@@ -46,13 +46,31 @@ int BinaryTree::insert(struct Node *newNode, struct Node *parent, int height) {
         }
         // Otherwise recursively insert left
         else {
-            return(insert(newNode, parent->left, height++));
+            return(insert(newNode, parent->left, height+1));
         }
     }
 
-    // TO-DO: insert right
+    // Insert right
     else {
-        return 0;
+        // Insert right if no right child
+        if (!(parent->right)) {
+            // Set parent left and new node's parent
+            parent->right = newNode;
+            newNode->parent = parent;
+
+            // Update height if changed
+            if (height > this->height) {
+                this->height = height;
+            }
+            
+            // Update size
+            this->size++;
+            return 0;
+        }
+        // Otherwise recursively insert right
+        else {
+            return(insert(newNode, parent->right, height+1));
+        }
     }
 }
 
