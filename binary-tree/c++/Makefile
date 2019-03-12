@@ -17,7 +17,7 @@ DEPFLAGS = -MMD -MF $(@:.o=.d)
 
 binaryTreeTest: $(OBJS)
 	@echo "CC $@"
-	$(Q)$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
+	$(Q)$(CC) $(CFLAGS) -o $@ $^
 
 %.o: %.cpp
 	@echo "CC $@"
