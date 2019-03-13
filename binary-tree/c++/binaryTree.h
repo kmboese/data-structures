@@ -30,6 +30,9 @@ public:
     long int getSize();
     struct Node *getRoot();
 
+    // Print functions
+    void print();
+
 private:
     // Root node
     struct Node *root;
@@ -39,4 +42,8 @@ private:
     long int size;
 };
 
+// Helper functions
+void printLine(std::vector<struct Node *> nodes, std::vector<int> indices);
+void getIndexLocations(std::vector<int> &indices, \
+    std::vector<int> &parentIndices);
 #endif
