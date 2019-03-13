@@ -8,14 +8,15 @@ using namespace std;
 
 // Test functions
 void testCreateTree(void);
-
-// Helper functions
-void printPass(void);
 void testSingleInsert(void);
 void testMultipleInserts(void);
 void testLeftInserts(void);
 void testRightInserts(void);
 void testBalancedInserts(void);
+void testPrint(void);
+
+// Helper functions
+void printPass(void);
 
 int main(void) {
     testCreateTree();
@@ -24,6 +25,7 @@ int main(void) {
     testLeftInserts();
     testRightInserts();
     testBalancedInserts();
+    testPrint();
     return 0;
 }
 
@@ -114,6 +116,7 @@ void testLeftInserts(void) {
     // Verify tree data
     assert(tree.getRoot()->data == count);
 
+    //tree.print();
     printPass();
 }
 
@@ -145,9 +148,8 @@ void testRightInserts(void) {
 
 void testBalancedInserts(void) {
     printf("\nTest: %s\n", __func__);
-    int startRange = 100;
-    int step = 10;
-    int increment = 1;
+    std::vector<int> elements = {50, 30, 100, 20, 40, 80, 120, 10, 25, \
+        35, 45, 70, 85, 110, 130, 1, 11};
     int inserts = 0;
 
     // Create tree  
@@ -155,31 +157,67 @@ void testBalancedInserts(void) {
 
     // Insert root element
     struct Node *root = new Node();
-    root->data = startRange;
+    root->data = elements[0];
     tree.insert(root, tree.getRoot());
-    inserts += 1;
+    inserts++;
 
     // Insert balanced elements
-    for (int i = startRange; i > 0; i -= step) {
-        struct Node *left = new Node();
-        struct Node *right = new Node();
-        left->data = i-increment;
-        right->data = i+increment;
-        tree.insert(left, tree.getRoot());
-        tree.insert(right, tree.getRoot());
-        inserts += 2;
+    for (unsigned int i = 1; i < elements.size(); i++) {
+        struct Node *tmp = new Node();
+        tmp->data = elements[i];
+        tree.insert(tmp, tree.getRoot());
+        inserts++;
     }
 
     // Verify tree properties
     cout << "Tree height: " << tree.getHeight() << endl;
     cout << "Tree size: " << tree.getSize() << endl;
-    assert(tree.getHeight() == (startRange/step)+1);
+    //assert(tree.getHeight() == (startRange/step)+1);
     assert(tree.getSize() == inserts);
 
     // Verify tree data
-    assert(tree.getRoot()->data == startRange);
-    assert(tree.getRoot()->left->data == startRange-1);
-    assert(tree.getRoot()->right->data == startRange+1);
+    assert(tree.getRoot()->data = elements[0]);
+
+    tree.print();
+
+    printPass();
+}
+
+void testPrint(void) {
+    printf("\nTest: %s\n", __func__);
+    int data = 100;
+
+    // Create tree
+    BinaryTree tree{};
+
+    struct Node *root = new Node();
+    struct Node *left = new Node();
+    struct Node *right = new Node();
+    struct Node *test = new Node();
+    struct Node *test2 = new Node();
+
+    root->data = data;
+    left->data = data-1;
+    right->data = data+1;
+    test->data = 1;
+    test2->data = 1000;
+
+    // Insert elements
+    tree.insert(root, tree.getRoot());
+    tree.insert(left, tree.getRoot());
+    tree.insert(right, tree.getRoot());
+    tree.insert(test, tree.getRoot());
+    tree.insert(test2, tree.getRoot());
+
+    assert(tree.getRoot()->data == data);
+    assert(tree.getRoot()->left->data == data-1);
+    assert(tree.getRoot()->right->data == data+1);
+    assert(tree.getRoot()->left->left->data == test->data);
+    assert(tree.getRoot()->right->right->data == test2->data);
+
+
+    // Print tree
+    tree.print();
 
     printPass();
 }
