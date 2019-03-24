@@ -1,5 +1,5 @@
-#ifndef BINARYHEAP_H
-#define BINARYHEAP_H
+#ifndef MINHEAP_H
+#define MINHEAP_H
 
 struct Node {
     struct Node *left;

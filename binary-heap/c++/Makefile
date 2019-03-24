@@ -1,5 +1,5 @@
-TARGETS		:= bhtest
-OBJS		:= bhtest.o
+TARGETS		:= mhtest
+OBJS		:= mhtest.o
 CC			:= g++
 CFLAGS		:= -std=c++14 -Wall
 CFLAGS		+= -g
@@ -15,7 +15,7 @@ DEPS	:= $(patsubst %.o,%.d,$(OBJS))
 -include $(DEPS)
 DEPFLAGS = -MMD -MF $(@:.o=.d)
 
-bhtest: $(OBJS)
+mhtest: $(OBJS)
 	@echo "CC $@"
 	$(Q)$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
