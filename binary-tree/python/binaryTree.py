@@ -1,13 +1,31 @@
 import sys
 from os.path import abspath
+
+'''
 # Work Node directory
 node_dir = abspath('C:/github-projects/data-structures/shared/')
 # Home Node directory
 #node_dir = r'D:\github-projects\data-structures\shared'
 sys.path.insert(0, node_dir)
 from node import Node
+'''
 
 DEBUG = False
+
+class Node:
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.parent = None
+        self.data = data
+
+    def getChildren(self):
+        children = []
+        if self.left:
+            children.append(self.left)
+        if self.right:
+            children.append(self.right)
+        return children
 
 class BinaryTree:
 
