@@ -2,6 +2,7 @@
 #define MINHEAP_H
 
 #include <limits>
+#include <string>
 
 const int ERROR_CODE = std::numeric_limits<int>::min();
 
@@ -36,10 +37,17 @@ public:
      */
     bool insert(int data, struct Node *n);
 
+    /* Finds the leftmost parent with a free child. Returns a pointer
+     * to the leftmost free parent */
+    struct Node *findLeftmostParent(struct Node *root);
+
     /* Find an element in a min-heap.
      * Returns: true if element exists in the heap, false otherwise.
      */
     bool find(int key, struct Node *n);
+
+    /* Prints nodes out in DFS order */
+    void printDFS(struct Node *n);
 
 private:
     int size;
