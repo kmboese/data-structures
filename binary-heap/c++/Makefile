@@ -1,5 +1,5 @@
-TARGETS		:= mhtest
-OBJS		:= mhtest.o
+TARGETS		:= minHeapTest
+OBJS		:= minHeapTest.o
 CC			:= g++
 CFLAGS		:= -std=c++14 -Wall
 CFLAGS		+= -g
@@ -15,7 +15,7 @@ DEPS	:= $(patsubst %.o,%.d,$(OBJS))
 -include $(DEPS)
 DEPFLAGS = -MMD -MF $(@:.o=.d)
 
-mhtest: $(OBJS)
+minHeapTest: $(OBJS)
 	@echo "CC $@"
 	$(Q)$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
