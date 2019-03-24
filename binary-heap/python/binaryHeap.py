@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, 'C:\github-projects\data-structures\shared')
+sys.path.insert(0, 'D:\github-projects\data-structures\shared')
 from node import Node
 
 # Binary heap: implementation of a max heap
@@ -14,7 +14,9 @@ class BinaryHeap:
 
     def insert(self, data):
         leaf = self.getLeaf(self.root)
-        return leaf
+        # Percolate new node up heap
+        percolateUp(leaf, data)
+        self.nodeCount += 1
     
     def getLeaf(self, node):
         if not node:
@@ -24,3 +26,24 @@ class BinaryHeap:
         if node.right:
             getLeaf(node.right)
         return node
+
+    # Percolate new node up the heap until it satisfies min-heap requirements
+    def percolateUp(parent, newNode):
+        # If data is greater than parent, we can insert
+        if newNode.data > parent.data:
+            if not parent.left:
+                parent.left = newNode
+            elif not parent.right:
+                parent.right = newNode
+            else:
+                print("Error: parent for percolate has no available children")
+                return
+        # Else swap with parent
+        else:
+            newNode.parent = parent.parent
+            parent.parent = newNode
+            newNode.
+
+
+
+
