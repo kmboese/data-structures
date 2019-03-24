@@ -3,7 +3,7 @@
     "python.linting.enabled": false,
     "python.linting.pylintEnabled": true,
 
-    "python.pythonPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Python36_64\\python.exe",
+    "python.pythonPath": "D:\\Program Files (x86)\\Python36-32\\python3.6.exe",
     "files.associations": {
         "ostream": "cpp",
         "algorithm": "cpp",
