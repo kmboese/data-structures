@@ -10,7 +10,7 @@ sys.path.insert(0, node_dir)
 from node import Node
 '''
 
-DEBUG = True
+DEBUG = False
 
 class Node:
     def __init__(self, data):
@@ -67,6 +67,20 @@ class BinaryTree:
             else:
                 height += 1
                 self.insert(n, current.right, height)
+
+    # Returns True if the key exists in the tree, False otherwise
+    def find(self, key, current):
+
+        # Base case: reached bottom of tree and key was not found
+        if not current:
+            return False
+        
+        if key == current.data:
+            return True
+        elif key < current.data:
+            return self.find(key, current.left)
+        else:
+            return self.find(key, current.right)
 
     def getNodesDFS(self, n=None, nodes=[]):
         if not self.root:
