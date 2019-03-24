@@ -1,6 +1,10 @@
 #ifndef MINHEAP_H
 #define MINHEAP_H
 
+#include <limits>
+
+const int ERROR_CODE = std::numeric_limits<int>::min();
+
 struct Node {
     struct Node *left;
     struct Node *right;
@@ -17,6 +21,16 @@ public:
     // Default constructor
     MinHeap();
 
+    /* ***** Accessors ***** */
+    // Returns the size of the minHeap
+    unsigned int getSize();
+    
+    // Returns the root of the minheap
+    struct Node *getRoot();
+
+    // Returns the minimum element of the heap
+    int getMin();
+
     /* Inserts an element into a min-heap.
      * Returns: true if insert succeeds, false otherwise. 
      */
@@ -30,8 +44,6 @@ public:
 private:
     int size;
     struct Node *root;
-
-    
 };
 
 #endif

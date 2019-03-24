@@ -1,5 +1,5 @@
 TARGETS		:= minHeapTest
-OBJS		:= minHeapTest.o
+OBJS		:= minHeapTest.o minHeap.o
 CC			:= g++
 CFLAGS		:= -std=c++14 -Wall
 CFLAGS		+= -g
