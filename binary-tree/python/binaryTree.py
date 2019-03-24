@@ -10,13 +10,12 @@ sys.path.insert(0, node_dir)
 from node import Node
 '''
 
-DEBUG = False
+DEBUG = True
 
 class Node:
     def __init__(self, data):
         self.left = None
         self.right = None
-        self.parent = None
         self.data = data
 
     def getChildren(self):
@@ -31,15 +30,14 @@ class BinaryTree:
 
     def __init__(self):
         self.root = None
-        self.elementCount = 0
+        self.size = 0
         self.height = 0
 
     def insert(self, n, current = None, height=1):
         # Special case: insert into an empty tree
-        if self.elementCount == 0:
+        if self.size == 0:
             self.root = n
-            #dPrint("root set to {}".format(n.data))
-            self.elementCount += 1
+            self.size += 1
             return
 
         # By default, start inserts at the root node
@@ -49,12 +47,11 @@ class BinaryTree:
         # Insert left
         if (n.data <= current.data):
             if (current.left is None):
-                dPrint("inserting {} left".format(n.data))
                 current.left = n
                 n.parent = current
                 if (height > self.height):
                     self.height = height
-                self.elementCount += 1
+                self.size += 1
             else:
                 height += 1
                 self.insert(n, current.left, height)
@@ -62,12 +59,11 @@ class BinaryTree:
         # Insert right
         else:
             if (current.right is None):
-                dPrint("inserting {} right".format(n.data))
                 current.right = n
                 n.parent = current
                 if (height > self.height):
                     self.height = height
-                self.elementCount += 1
+                self.size += 1
             else:
                 height += 1
                 self.insert(n, current.right, height)
@@ -108,7 +104,6 @@ class BinaryTree:
             queue.remove(queue[0])
         return nodes
         
-        
 
     # Traversal functions
     def printDFS(self, n=None, level=0):
@@ -117,7 +112,7 @@ class BinaryTree:
             # Base case: node is the root
         if not n:
             print("DFS: The tree has {} elements and is height {}".\
-                format(self.elementCount, self.height))   
+                format(self.size, self.height))   
             n = self.root
             print("Root: {:4}".format(n.data))
         else:
@@ -136,7 +131,7 @@ class BinaryTree:
         if not n:
             children = self.root.getChildren()
             print("BFS: The tree has {} elements and is height {}".\
-                format(self.elementCount, self.height))
+                format(self.size, self.height))
             n = self.root
             print("Root: {:4}\tHeight: {}".format(n.data, height))
         
